@@ -1,0 +1,13 @@
+<h1>Listar Top Filmes:</h1>
+  <div class="movies-list">
+    <div *ngFor="let movie of topMovies" class="movie-card">
+      <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" alt="{{movie.title}}" class="movie-poster">
+      <div class="movie-details">
+        <small>{{ movie.id }}</small>
+        <h3 class="movie-title">{{ movie.title }}</h3>
+      </div>
+      <div>
+        <small>Popularidade: {{ movie.popularity }}</small>
+      </div>
+    </div>
+  </div>
