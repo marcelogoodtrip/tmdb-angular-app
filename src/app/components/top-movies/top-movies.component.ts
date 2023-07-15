@@ -27,4 +27,11 @@ export class TopMoviesComponent {
         console.error(error);
       });
   }
+
+  likeMovie(movie: IMovie) {
+    if(!movie.like) {
+      movie.like = 0;
+    }
+    movie.like++;
+  }
 }
