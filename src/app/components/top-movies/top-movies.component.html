@@ -9,5 +9,9 @@
       <div>
         <small>Popularidade: {{ movie.popularity }}</small>
       </div>
+      <div>
+        <button (click)="likeMovie(movie)">Like</button>
+        <span>Likes: {{ movie.like }}</span>
+      </div>
     </div>
   </div>

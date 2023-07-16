@@ -4,5 +4,6 @@ export interface IMovie {
   popularity: number,
   release_date: Date,
   vote_average: number,
-  poster_path: string
+  poster_path: string,
+  like: number
 }
