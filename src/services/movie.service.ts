@@ -34,7 +34,12 @@ export class MovieService {
   // }
 
   likeMovie(movieId: number): Observable<any> {
-    const url = `${environment.NEST_API_PATH}${movieId}/like`;
+    const url = `${environment.NEST_API_PATH}top-movies/${movieId}/like`;
     return this.httpClient.post(url, {});
+  }
+
+  topRatedMovies(): Observable<IMovie[]> {
+    const url = `${environment.NEST_API_PATH}top-movies/top-rated-movies`;
+    return this.httpClient.get<IMovie[]>(url);
   }
 }

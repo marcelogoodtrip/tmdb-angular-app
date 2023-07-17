@@ -5,17 +5,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MovieService } from 'src/services/movie.service';
 import { TopMoviesComponent } from './components/top-movies/top-movies.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TopRatedComponent } from './components/top-rated/top-rated.component';
+import { AppRoutingModule } from './app.routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopMoviesComponent
+    TopMoviesComponent,
+    TopRatedComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgbModule
+    AppRoutingModule
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]
