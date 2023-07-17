@@ -1,0 +1,17 @@
+<p>top-rated works!</p>
+<h1>Top Filmes com Mais Likes:</h1>
+<div class="movies-list">
+  <div *ngFor="let movie of topRatedMovies" class="movie-card">
+    <img src="{{ movie.poster_path }}" alt="{{ movie.title }}" class="movie-poster">
+    <div class="movie-details">
+      <small>ID: {{ movie.id }}</small>
+      <h3 class="movie-title">{{ movie.title }}</h3>
+    </div>
+    <div>
+      <small>Popularidade: {{ movie.popularity }}</small>
+    </div>
+    <div>
+      <span>Likes: {{ movie.like }}</span>
+    </div>
+  </div>
+</div>
