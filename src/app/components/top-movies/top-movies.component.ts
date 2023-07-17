@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IMovie } from 'src/interfaces/imovie';
 import { MovieService } from 'src/services/movie.service';
+import { tap, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-top-movies',
@@ -29,9 +31,18 @@ export class TopMoviesComponent {
   }
 
   likeMovie(movie: IMovie) {
-    if(!movie.like) {
-      movie.like = 0;
-    }
     movie.like++;
+    this.movieService.likeMovie(movie.id)
+      .pipe(
+        tap(() => {
+          console.log('Curtida registrada com sucesso!');
+        }),
+        catchError((error) => {
+          console.error('Erro ao registrar a curtida:', error);
+          movie.like--;
+          return throwError(error);
+        })
+      )
+      .subscribe();
   }
 }
