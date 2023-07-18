@@ -3,6 +3,7 @@ import { IMovie } from 'src/interfaces/imovie';
 import { MovieService } from 'src/services/movie.service';
 import { tap, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-top-movies',
@@ -12,7 +13,7 @@ import { throwError } from 'rxjs';
 export class TopMoviesComponent {
   topMovies: IMovie[] = [];
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService, private authService: AuthService) {}
 
   ngOnInit() {
     this.getAllMovies();
@@ -31,18 +32,36 @@ export class TopMoviesComponent {
   }
 
   likeMovie(movie: IMovie) {
-    movie.like++;
-    this.movieService.likeMovie(movie.id)
-      .pipe(
-        tap(() => {
-          console.log('Curtida registrada com sucesso!');
-        }),
-        catchError((error) => {
-          console.error('Erro ao registrar a curtida:', error);
-          movie.like--;
-          return throwError(error);
-        })
-      )
-      .subscribe();
+    if(this.authService.isLoggedIn()) {
+      this.movieService.likeMovie(movie.id)
+      .subscribe(
+        () => {
+          movie.like++;
+          console.log('Filme curtido com sucesso!');
+        },
+        error => {
+          console.error('Erro ao curtir o filme:', error);
+        }
+      );
+    } else {
+      console.log('Usuário não autenticado.');
+      // Aqui você pode adicionar o redirecionamento para a página de login
+    }
   }
+
+  // likeMovie(movie: IMovie) {
+  //   movie.like++;
+  //   this.movieService.likeMovie(movie.id)
+  //     .pipe(
+  //       tap(() => {
+  //         console.log('Curtida registrada com sucesso!');
+  //       }),
+  //       catchError((error) => {
+  //         console.error('Erro ao registrar a curtida:', error);
+  //         movie.like--;
+  //         return throwError(error);
+  //       })
+  //     )
+  //     .subscribe();
+  // }
 }
