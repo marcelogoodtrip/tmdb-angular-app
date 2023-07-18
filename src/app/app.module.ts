@@ -8,12 +8,14 @@ import { TopMoviesComponent } from './components/top-movies/top-movies.component
 import { TopRatedComponent } from './components/top-rated/top-rated.component';
 import { AppRoutingModule } from './app.routing.module';
 import { AuthService } from 'src/services/auth.service';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopMoviesComponent,
-    TopRatedComponent
+    TopRatedComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
