@@ -7,6 +7,7 @@ import { MovieService } from 'src/services/movie.service';
 import { TopMoviesComponent } from './components/top-movies/top-movies.component';
 import { TopRatedComponent } from './components/top-rated/top-rated.component';
 import { AppRoutingModule } from './app.routing.module';
+import { AuthService } from 'src/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { AppRoutingModule } from './app.routing.module';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [MovieService],
+  providers: [MovieService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
