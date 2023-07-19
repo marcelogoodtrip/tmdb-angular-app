@@ -9,6 +9,7 @@ import { TopRatedComponent } from './components/top-rated/top-rated.component';
 import { AppRoutingModule } from './app.routing.module';
 import { AuthService } from 'src/services/auth.service';
 import { LoginComponent } from './components/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoginComponent } from './components/login/login.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [MovieService, AuthService],
   bootstrap: [AppComponent]

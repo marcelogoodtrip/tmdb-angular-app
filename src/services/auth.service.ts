@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.httpClient.post<{ token: string }>(`${environment.NEST_API_PATH}/auth/login`, { email, password })
+    return this.httpClient.post<{ token: string }>(`${environment.NEST_API_PATH}auth/login`, { email, password })
     .pipe(
       tap(response => {
         localStorage.setItem('token', response.token);

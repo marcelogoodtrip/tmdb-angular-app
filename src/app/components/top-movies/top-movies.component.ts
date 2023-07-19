@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IMovie } from 'src/interfaces/imovie';
 import { MovieService } from 'src/services/movie.service';
-import { tap, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
 import { AuthService } from 'src/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-movies',
@@ -13,7 +12,7 @@ import { AuthService } from 'src/services/auth.service';
 export class TopMoviesComponent {
   topMovies: IMovie[] = [];
 
-  constructor(private movieService: MovieService, private authService: AuthService) {}
+  constructor(private movieService: MovieService, private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.getAllMovies();
@@ -45,7 +44,7 @@ export class TopMoviesComponent {
       );
     } else {
       console.log('Usuário não autenticado.');
-      // Aqui você pode adicionar o redirecionamento para a página de login
+        this.router.navigate(['/login']);
     }
   }
 
