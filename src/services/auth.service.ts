@@ -9,6 +9,11 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
+  signUp(signUpData: any) {
+    const signupUrl = `${environment.NEST_API_PATH}auth/signup`;
+    return this.httpClient.post(signupUrl, signUpData);
+  }
+
   login(email: string, password: string) {
     return this.httpClient.post<{ token: string }>(`${environment.NEST_API_PATH}auth/login`, { email, password })
     .pipe(

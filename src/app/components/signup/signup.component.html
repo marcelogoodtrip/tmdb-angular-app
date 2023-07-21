@@ -1,0 +1,17 @@
+<div class="background">
+  <form [formGroup]="signupForm" (ngSubmit)="onSignupSubmit()">
+    <h3>Signup</h3>
+
+    <label for="text">Name:</label>
+    <input type="text" formControlName="name" placeholder="Name" />
+
+    <label for="username">Email:</label>
+    <input formControlName="email" type="text" placeholder="Email" id="username">
+
+    <label for="password">Password:</label>
+    <small>*mínimo 6 caracteres</small>
+    <input formControlName="password" type="password" placeholder="Password" id="password">
+
+    <button class="login-btn" [disabled]="signupForm.invalid">Register Account</button>
+  </form>
+</div>

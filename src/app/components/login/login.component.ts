@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
 
 @Component({
@@ -10,7 +11,11 @@ import { AuthService } from 'src/services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -19,7 +24,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onLoginSubmit() {
     if(this.loginForm.invalid) {
       return;
     }
@@ -30,11 +35,10 @@ export class LoginComponent implements OnInit {
     .subscribe(
       () => {
         console.log('Login realizado com sucesso!');
-        // Aqui você pode adicionar o redirecionamento para a página de filmes populares após o login bem-sucedido
+        this.router.navigate(['']);
       },
       error => {
         console.error('Erro ao fazer login:', error);
-        // Exibir uma mensagem de erro para o usuário
       }
     );
   }
