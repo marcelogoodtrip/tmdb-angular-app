@@ -1,17 +1,28 @@
-<p>top-rated works!</p>
-<h1>Top Filmes com Mais Likes:</h1>
-<div class="movies-list">
-  <div *ngFor="let movie of topRatedMovies" class="movie-card">
-    <img src="{{ movie.poster_path }}" alt="{{ movie.title }}" class="movie-poster">
-    <div class="movie-details">
-      <small>ID: {{ movie.id }}</small>
-      <h3 class="movie-title">{{ movie.title }}</h3>
-    </div>
-    <div>
-      <small>Popularidade: {{ movie.popularity }}</small>
-    </div>
-    <div>
-      <span>Likes: {{ movie.like }}</span>
+
+<h1>Top Filmes Mais Curtidos:</h1>
+
+<div class="box">
+  <div *ngFor="let movie of topRatedMovies">
+    <div class="container">
+      <div class="cellphone-container" >
+          <div class="movie">
+            <div class="menu"></div>
+              <img class="movie-img" src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" alt="{{movie.title}}">
+            <div class="details-content">
+              <h4>{{ movie.title }}</h4>
+               <div class="more-details">
+                <div class="list">
+                  <ul class="movie-gen">
+                    <li>{{ movie.like }} Curitdas.</li>
+                  </ul>
+                </div>
+              </div>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="top-btn">
+  <button routerLink="" class="rated-btn">Ver Filmes Mais Populares</button>
 </div>

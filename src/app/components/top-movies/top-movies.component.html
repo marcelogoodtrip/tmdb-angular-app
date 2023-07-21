@@ -1,38 +1,29 @@
-<h1>Top Filmes:</h1>
-  <div class="movies-list">
-    <div *ngFor="let movie of topMovies" class="movie-card">
-      <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" alt="{{movie.title}}" class="movie-poster">
-      <div class="movie-details">
-        <small>ID: {{ movie.id }}</small>
-        <h3 class="movie-title">{{ movie.title }}</h3>
-      </div>
-      <div>
-        <small>Popularidade: {{ movie.popularity }}</small>
-      </div>
-      <div>
-        <button (click)="likeMovie(movie)">Like</button>
-        <span>Likes: {{ movie.like }}</span>
+  <h1>Top Filmes Mais Populares:</h1>
+
+  <div class="box">
+    <div *ngFor="let movie of topMovies">
+      <div class="container">
+        <div class="cellphone-container" >
+            <div class="movie">
+              <div class="menu"></div>
+                <img class="movie-img" src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" alt="{{movie.title}}">
+              <div class="details-content">
+                <h4>{{ movie.title }}</h4>
+                 <div class="more-details">
+                  <div class="list">
+                    <ul class="movie-gen">
+                      <li>{{ movie.release_date }} |</li>
+                      <li>Popularidade: {{ movie.popularity }}</li>
+                    </ul>
+                   </div>
+                  <div class="like-btn"><button (click)="likeMovie(movie)">curtir</button></div>
+                 </div>
+            </div>
+        </div>
       </div>
     </div>
   </div>
 
-
-<!-- <h1>Top Filmes</h1>
-
-<div class='card' >
-    <div *ngFor="let movie of topMovies" class="card-content">
-      <div class='card_left'>
-        <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" alt="{{movie.title}}">
-      </div>
-      <div class='card_right'>
-        <h2>{{ movie.title }}</h2>
-        <small>Lançamento: {{ movie.release_date }}</small>
-        <small>Popularidade: {{ movie.popularity }}</small>
-        <div class='card_right__details'>
-          <div class='card_right__review'>
-            <p>{{ movie.overview }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-</div> -->
+  <div class="top-btn">
+    <button routerLink="/top-rated" class="rated-btn">Ver Filmes Mais Curtidos</button>
+  </div>
